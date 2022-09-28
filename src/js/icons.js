@@ -13,7 +13,6 @@ import send from '../assets/send.svg';
 import pallette from '../assets/pallette.svg';
 import camera from '../assets/camera.svg';
 import airplay from '../assets/airplay.svg';
-import subtitle from '../assets/subtitle.svg';
 import loading from '../assets/loading.svg';
 import chromecast from '../assets/chromecast.svg';
 
@@ -32,7 +31,6 @@ const Icons = {
     send: send,
     pallette: pallette,
     camera: camera,
-    subtitle: subtitle,
     loading: loading,
     airplay: airplay,
     chromecast: chromecast,

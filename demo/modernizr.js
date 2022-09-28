@@ -547,10 +547,10 @@ When used on an `<a>`, this attribute signifies that the resource it points to s
 }
 !*/
 
-  Modernizr.addTest('texttrackapi', typeof (createElement('video').addTextTrack) === 'function');
+  // Modernizr.addTest('texttrackapi', typeof (createElement('video').addTextTrack) === 'function');
 
   // a more strict test for track including UI support: document.createElement('track').kind === 'subtitles'
-  Modernizr.addTest('track', 'kind' in createElement('track'));
+  // Modernizr.addTest('track', 'kind' in createElement('track'));
 
 
   /**

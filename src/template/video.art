@@ -1,11 +1,9 @@
-{{ set enableSubtitle = subtitle && subtitle.type === 'webvtt' }}
 <video
     class="dplayer-video {{ if current }}dplayer-video-current{{ /if }}"
     webkit-playsinline
     {{ if airplay }} x-webkit-airplay="allow" {{ /if }}
     playsinline
     {{ if pic }}poster="{{ pic }}"{{ /if }}
-    {{ if screenshot || enableSubtitle }}crossorigin="anonymous"{{ /if }}
     {{ if preload }}preload="{{ preload }}"{{ /if }}
     {{ if airplay }}
     nosrc
@@ -16,7 +14,4 @@
     {{ if airplay }}
     <source src="{{ url }}">
     {{ /if}}
-    {{ if enableSubtitle }}
-    <track class="dplayer-subtrack" kind="metadata" default src="{{ typeof subtitle.url === 'string' ? subtitle.url : subtitle.url[subtitle.index].url }}"></track>
-    {{ /if }}
 </video>

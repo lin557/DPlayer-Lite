@@ -68,9 +68,6 @@ const dp = new DPlayer({
         pic: 'demo.jpg',
         thumbnails: 'thumbnails.jpg',
     },
-    subtitle: {
-        url: 'webvtt.vtt',
-    },
 });
 ```
 
@@ -142,13 +139,6 @@ const dp = new DPlayer({
         pic: 'dplayer.png',
         thumbnails: 'thumbnails.jpg',
         type: 'auto',
-    },
-    subtitle: {
-        url: 'dplayer.vtt',
-        type: 'webvtt',
-        fontSize: '25px',
-        bottom: '10%',
-        color: '#b7daff',
     },
     contextmenu: [
         {
@@ -304,9 +294,6 @@ Player events
 -   fullscreen_cancel
 -   webfullscreen
 -   webfullscreen_cancel
--   subtitle_show
--   subtitle_hide
--   subtitle_change
 
 ## Quality switching
 

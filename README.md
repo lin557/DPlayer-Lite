@@ -33,7 +33,6 @@ DPlayer is a lovely HTML5 video player to help people build video easily.
     -   Hotkeys
     -   Quality switching
     -   Thumbnails
-    -   Subtitle
 
 Using DPlayer on your project? [Let me know!](https://github.com/DIYgod/DPlayer/issues/31)
 

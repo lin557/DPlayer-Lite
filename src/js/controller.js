@@ -25,12 +25,7 @@ class Controller {
         this.initFullButton();
         this.initQualityButton();
         this.initScreenshotButton();
-        // if subtitle url not array, not init old single subtitle button
-        if (this.player.options.subtitle) {
-            if (typeof this.player.options.subtitle.url === 'string') {
-                this.initSubtitleButton();
-            }
-        }
+
         this.initHighlights();
         this.initAirplayButton();
         this.initChromecastButton();
@@ -361,23 +356,6 @@ class Controller {
                 }
             });
         }
-    }
-
-    initSubtitleButton() {
-        this.player.events.on('subtitle_show', () => {
-            this.player.template.subtitleButton.dataset.balloon = this.player.tran('hide-subs');
-            this.player.template.subtitleButtonInner.style.opacity = '';
-            this.player.user.set('subtitle', 1);
-        });
-        this.player.events.on('subtitle_hide', () => {
-            this.player.template.subtitleButton.dataset.balloon = this.player.tran('show-subs');
-            this.player.template.subtitleButtonInner.style.opacity = '0.4';
-            this.player.user.set('subtitle', 0);
-        });
-
-        this.player.template.subtitleButton.addEventListener('click', () => {
-            this.player.subtitle.toggle();
-        });
     }
 
     setAutoHide() {

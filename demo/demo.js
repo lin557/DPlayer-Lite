@@ -46,9 +46,6 @@ function initPlayers() {
             pic: 'https://i.loli.net/2019/06/06/5cf8c5d9c57b510947.png',
             thumbnails: 'https://i.loli.net/2019/06/06/5cf8c5d9c57b510947.png'
         },
-        subtitle: {
-            url: 'subtitle test'
-        },
     });
     // dp1
     window.dp1 = new DPlayer({
@@ -59,25 +56,6 @@ function initPlayers() {
             url: 'https://api.dogecloud.com/player/get.mp4?vcode=5ac682e6f8231991&userId=17&ext=.mp4',
             pic: 'https://i.loli.net/2019/06/06/5cf8c5d9c57b510947.png',
             thumbnails: 'https://i.loli.net/2019/06/06/5cf8c5d9c57b510947.png'
-        },
-        subtitle: {
-            url: [
-                {
-                    url: 'https://s-sh-17-dplayercdn.oss.dogecdn.com/hikarunara.vtt',
-                    lang: 'zh-cn',
-                    name: '光',
-                },
-                {
-                    url: 'https://gist.githubusercontent.com/samdutton/ca37f3adaf4e23679957b8083e061177/raw/e19399fbccbc069a2af4266e5120ae6bad62699a/sample.vtt',
-                    lang: 'en-us',
-                    name: 'github',
-                },
-            ],
-            defaultSubtitle: 7,
-            type: 'webvtt',
-            fontSize: '25px',
-            bottom: '10%',
-            color: '#b7daff'
         },
     });
 
@@ -102,13 +80,6 @@ function initPlayers() {
             thumbnails: 'https://i.loli.net/2019/06/06/5cf8c5d9cec8510758.jpg',
             type: 'auto'
         },
-        subtitle: {
-            url: 'https://s-sh-17-dplayercdn.oss.dogecdn.com/hikarunara.vtt',
-            type: 'webvtt',
-            fontSize: '25px',
-            bottom: '10%',
-            color: '#b7daff'
-        },
         contextmenu: [
             {
                 text: 'custom contextmenu',
@@ -130,7 +101,6 @@ function initPlayers() {
         'destroy',
         'resize',
         'fullscreen', 'fullscreen_cancel', 'webfullscreen', 'webfullscreen_cancel',
-        'subtitle_show', 'subtitle_hide', 'subtitle_change'
     ];
     const eventsEle = document.getElementById('events');
     for (let i = 0; i < events.length; i++) {

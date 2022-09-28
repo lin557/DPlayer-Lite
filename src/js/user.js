@@ -4,12 +4,10 @@ class User {
     constructor(player) {
         this.storageName = {
             volume: 'dplayer-volume',
-            subtitle: 'dplayer-subtitle-show',
         };
         this.default = {
             opacity: 0.7,
             volume: player.options.hasOwnProperty('volume') ? player.options.volume : 0.7,
-            subtitle: 1,
         };
         this.data = {};
 

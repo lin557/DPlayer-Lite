@@ -137,13 +137,6 @@ const dp = new DPlayer({
         thumbnails: 'thumbnails.jpg',
         type: 'auto',
     },
-    subtitle: {
-        url: 'dplayer.vtt',
-        type: 'webvtt',
-        fontSize: '25px',
-        bottom: '10%',
-        color: '#b7daff',
-    },
     contextmenu: [
         {
             text: 'custom1',
@@ -292,9 +285,6 @@ dp.on('ended', function () {
 -   resize
 -   fullscreen
 -   fullscreen_cancel
--   subtitle_show
--   subtitle_hide
--   subtitle_change
 
 ## 清晰度切换
 

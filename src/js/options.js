@@ -30,13 +30,6 @@ export default (options) => {
     if (options.video) {
         !options.video.type && (options.video.type = 'auto');
     }
-    if (options.subtitle) {
-        !options.subtitle.type && (options.subtitle.type = 'webvtt');
-        !options.subtitle.fontSize && (options.subtitle.fontSize = '20px');
-        !options.subtitle.bottom && (options.subtitle.bottom = '40px');
-        !options.subtitle.color && (options.subtitle.color = '#fff');
-    }
-
     if (options.video.quality) {
         options.video.url = options.video.quality[options.video.defaultQuality].url;
     }
