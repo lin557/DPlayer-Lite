@@ -94,7 +94,6 @@ DPlayer 有丰富的参数可以自定义你的播放器实例
 | video.defaultQuality | -                                  | 见[#清晰度切换](#清晰度切换)                                                                            |
 | video.url            | -                                  | 视频链接                                                                                                |
 | video.pic            | -                                  | 视频封面                                                                                                |
-| video.thumbnails     | -                                  | 视频缩略图，可以使用 [DPlayer-thumbnails](https://github.com/MoePlayer/DPlayer-thumbnails) 生成         |
 | video.type           | 'auto'                             | 可选值: 'auto', 'hls', 'flv', 'dash', 'webtorrent', 'normal' 或其他自定义类型, 见[#MSE 支持](#mse-支持) |
 | video.customType     | -                                  | 自定义类型, 见[#MSE 支持](#mse-支持)                                                                    |
 | contextmenu          | []                                 | 自定义右键菜单                                                                                          |
@@ -117,7 +116,6 @@ const dp = new DPlayer({
     video: {
         url: 'dplayer.mp4',
         pic: 'dplayer.png',
-        thumbnails: 'thumbnails.jpg',
         type: 'auto',
     },
     contextmenu: [
@@ -164,19 +162,10 @@ const dp = new DPlayer({
 -   `dp.switchVideo(video)`: 切换到其他视频
 
     ```js
-    dp.switchVideo(
-        {
-            url: 'second.mp4',
-            pic: 'second.png',
-            thumbnails: 'second.jpg',
-        },
-        {
-            id: 'test',
-            api: 'https://api.prprpr.me/dplayer/',
-            maximum: 3000,
-            user: 'DIYgod',
-        }
-    );
+    dp.switchVideo({
+        url: 'second.mp4',
+        pic: 'second.png',
+    });
     ```
 
 -   `dp.notice(text: string, time: number)`: 显示通知，时间的单位为毫秒，默认时间 2000 毫秒，默认透明度 0.8
@@ -256,8 +245,6 @@ dp.on('ended', function () {
 播放器事件
 
 -   screenshot
--   thumbnails_show
--   thumbnails_hide
 -   contextmenu_show
 -   contextmenu_hide
 -   notice_show
@@ -286,7 +273,6 @@ dp.on('ended', function () {
         }],
         defaultQuality: 0,
         pic: 'https://i.loli.net/2019/06/06/5cf8c5d9c57b510947.png',
-        thumbnails: 'https://i.loli.net/2019/06/06/5cf8c5d9cec8510758.jpg'
     }
 }"></DPlayer>
 
@@ -308,7 +294,6 @@ const dp = new DPlayer({
         ],
         defaultQuality: 0,
         pic: 'demo.png',
-        thumbnails: 'thumbnails.jpg',
     },
 });
 ```

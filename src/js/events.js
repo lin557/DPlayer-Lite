@@ -29,8 +29,6 @@ class Events {
         ];
         this.playerEvents = [
             'screenshot',
-            'thumbnails_show',
-            'thumbnails_hide',
             'contextmenu_show',
             'contextmenu_hide',
             'notice_show',

@@ -32,7 +32,6 @@ DPlayer is a lovely HTML5 video player to help people build video easily.
     -   Screenshot
     -   Hotkeys
     -   Quality switching
-    -   Thumbnails
 
 Using DPlayer on your project? [Let me know!](https://github.com/DIYgod/DPlayer/issues/31)
 
@@ -57,10 +56,6 @@ Using DPlayer on your project? [Let me know!](https://github.com/DIYgod/DPlayer/
 ## Related Projects
 
 Feel free to submit yours in [`Let me know!`](https://github.com/MoePlayer/DPlayer/issues/31)
-
-### Tooling
-
--   [DPlayer-thumbnails](https://github.com/MoePlayer/DPlayer-thumbnails): generate video thumbnails
 
 ### Plugins
 

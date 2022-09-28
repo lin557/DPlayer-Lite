@@ -7,7 +7,6 @@ import Template from './template';
 import Icons from './icons';
 import Events from './events';
 import FullScreen from './fullscreen';
-import User from './user';
 import Bar from './bar';
 import Timer from './timer';
 import Bezel from './bezel';
@@ -37,7 +36,6 @@ class DPlayer {
         }
         this.tran = new i18n(this.options.lang).tran;
         this.events = new Events();
-        this.user = new User(this);
         this.container = this.options.container;
 
         this.container.classList.add('dplayer');
@@ -189,7 +187,7 @@ class DPlayer {
     /**
      * Set volume
      */
-    volume(percentage, nostorage, nonotice) {
+    volume(percentage, nonotice) {
         percentage = parseFloat(percentage);
         if (!isNaN(percentage)) {
             percentage = Math.max(percentage, 0);
@@ -197,9 +195,6 @@ class DPlayer {
             this.bar.set('volume', percentage, 'width');
             const formatPercentage = `${(percentage * 100).toFixed(0)}%`;
             this.template.volumeBarWrapWrap.dataset.balloon = formatPercentage;
-            if (!nostorage) {
-                this.user.set('volume', percentage);
-            }
             if (!nonotice) {
                 this.notice(`${this.tran('volume')} ${(percentage * 100).toFixed(0)}%`);
             }
@@ -436,7 +431,15 @@ class DPlayer {
             });
         }
 
-        this.volume(this.user.get('volume'), true, true);
+        if (this.options.volume >= 0) {
+            this.volume(this.options.volume, true);
+        }
+        // 静音才能autoplay
+        if (this.options.muted) {
+            this.video.muted = true;
+            this.template.volumeIcon.innerHTML = Icons.volumeOff;
+            this.bar.set('volume', 0, 'width');
+        }
     }
 
     switchQuality(index) {
@@ -533,9 +536,6 @@ class DPlayer {
     }
 
     resize() {
-        if (this.controller.thumbnails) {
-            this.controller.thumbnails.resize(160, (this.video.videoHeight / this.video.videoWidth) * 160, this.template.barWrap.offsetWidth);
-        }
         this.events.trigger('resize');
     }
 

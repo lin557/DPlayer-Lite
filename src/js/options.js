@@ -1,5 +1,3 @@
-/* global DPLAYER_VERSION */
-
 export default (options) => {
     // default options
     const defaultOption = {
@@ -18,6 +16,7 @@ export default (options) => {
         playbackSpeed: [0.5, 0.75, 1, 1.25, 1.5, 2],
         video: {},
         contextmenu: [],
+        muted: false,
         mutex: true,
         pluginOptions: { hls: {}, flv: {}, dash: {}, webtorrent: {} },
         preventClickToggle: false,
@@ -44,14 +43,6 @@ export default (options) => {
             click: (player) => {
                 player.infoPanel.triggle();
             },
-        },
-        {
-            key: 'about-author',
-            link: 'https://diygod.me',
-        },
-        {
-            text: `DPlayer v${DPLAYER_VERSION}`,
-            link: 'https://github.com/MoePlayer/DPlayer',
         },
     ]);
 

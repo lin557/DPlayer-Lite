@@ -14,10 +14,6 @@ Let's make DPlayer better, feel free to submit yours in [`Let me know!`](https:/
 
 ## Related Projects
 
-### Tooling
-
--   [DPlayer-thumbnails](https://github.com/MoePlayer/DPlayer-thumbnails): generate video thumbnails
-
 ### Plugins
 
 -   [DPlayer-for-typecho](https://github.com/volio/DPlayer-for-typecho): Typecho

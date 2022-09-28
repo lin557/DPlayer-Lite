@@ -1,5 +1,4 @@
 import utils from './utils';
-import Thumbnails from './thumbnails';
 import Icons from './icons';
 
 let cast;
@@ -20,7 +19,6 @@ class Controller {
         }
 
         this.initPlayButton();
-        this.initThumbnails();
         this.initPlayedBar();
         this.initFullButton();
         this.initQualityButton();
@@ -85,21 +83,6 @@ class Controller {
         });
     }
 
-    initThumbnails() {
-        if (this.player.options.video.thumbnails) {
-            this.thumbnails = new Thumbnails({
-                container: this.player.template.barPreview,
-                barWidth: this.player.template.barWrap.offsetWidth,
-                url: this.player.options.video.thumbnails,
-                events: this.player.events,
-            });
-
-            this.player.on('loadedmetadata', () => {
-                this.thumbnails.resize(160, (this.player.video.videoHeight / this.player.video.videoWidth) * 160, this.player.template.barWrap.offsetWidth);
-            });
-        }
-    }
-
     initPlayedBar() {
         const thumbMove = (e) => {
             let percentage = ((e.clientX || e.changedTouches[0].clientX) - utils.getBoundingClientRectViewLeft(this.player.template.playedBarWrap)) / this.player.template.playedBarWrap.clientWidth;
@@ -134,33 +117,21 @@ class Controller {
                     return;
                 }
                 const time = this.player.video.duration * (tx / this.player.template.playedBarWrap.offsetWidth);
-                if (utils.isMobile) {
-                    this.thumbnails && this.thumbnails.show();
-                }
-                this.thumbnails && this.thumbnails.move(tx);
                 this.player.template.playedBarTime.style.left = `${tx - (time >= 3600 ? 25 : 20)}px`;
                 this.player.template.playedBarTime.innerText = utils.secondToTime(time);
                 this.player.template.playedBarTime.classList.remove('hidden');
             }
         });
 
-        this.player.template.playedBarWrap.addEventListener(utils.nameMap.dragEnd, () => {
-            if (utils.isMobile) {
-                this.thumbnails && this.thumbnails.hide();
-            }
-        });
-
         if (!utils.isMobile) {
             this.player.template.playedBarWrap.addEventListener('mouseenter', () => {
                 if (this.player.video.duration) {
-                    this.thumbnails && this.thumbnails.show();
                     this.player.template.playedBarTime.classList.remove('hidden');
                 }
             });
 
             this.player.template.playedBarWrap.addEventListener('mouseleave', () => {
                 if (this.player.video.duration) {
-                    this.thumbnails && this.thumbnails.hide();
                     this.player.template.playedBarTime.classList.add('hidden');
                 }
             });

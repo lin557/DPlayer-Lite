@@ -14,10 +14,6 @@ sidebar: auto
 
 ## 相关项目
 
-### 工具
-
--   [DPlayer-thumbnails](https://github.com/MoePlayer/DPlayer-thumbnails): generate video thumbnails
-
 ### 插件
 
 -   [DPlayer-for-typecho](https://github.com/volio/DPlayer-for-typecho): Typecho
