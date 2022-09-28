@@ -75,51 +75,34 @@ const dp = new DPlayer({
 
 You can custom your player instance by those options
 
-| Name                 | Default                            | Description                                                                                                                                                |
-| -------------------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| container            | document.querySelector('.dplayer') | player container                                                                                                                                           |
-| live                 | false                              | enable live mode, see [#live](#live)                                                                                                                       |
-| autoplay             | false                              | video autoplay                                                                                                                                             |
-| theme                | '#b7daff'                          | main color                                                                                                                                                 |
-| loop                 | false                              | video loop                                                                                                                                                 |
-| lang                 | navigator.language.toLowerCase()   | values: 'en', 'zh-cn', 'zh-tw'                                                                                                                             |
-| screenshot           | false                              | enable screenshot, if true, video and video poster must enable Cross-Origin                                                                                |
-| airplay              | false                              | enable airplay in Safari                                                                                                                                   |
-| chromecast           | false                              | enable Chromecast                                                                                                                                          |
-| hotkey               | true                               | enable hotkey, support FF, FR, volume control, play & pause                                                                                                |
-| preload              | 'auto'                             | values: 'none', 'metadata', 'auto'                                                                                                                         |
-| volume               | 0.7                                | default volume, notice that player will remember user setting, default volume will not work after user set volume themselves                               |
-| playbackSpeed        | [0.5, 0.75, 1, 1.25, 1.5, 2]       | optional playback speed, or or you can set a custom one                                                                                                    |
-| logo                 | -                                  | showing logo in the top left corner, you can adjust its size and position by CSS                                                                           |
-| apiBackend           | -                                  | getting and sending danmaku in your way, see [#live](#live)                                                                                                |
-| preventClickToggle   | false                              | prevent toggle video play/pause status when click player                                                                                                   |
-| video                | -                                  | video info                                                                                                                                                 |
-| video.quality        | -                                  | see [#Quality switching](#quality-switching)                                                                                                               |
-| video.defaultQuality | -                                  | see [#Quality switching](#quality-switching)                                                                                                               |
-| video.url            | -                                  | video url                                                                                                                                                  |
-| video.pic            | -                                  | video poster                                                                                                                                               |
-| video.thumbnails     | -                                  | video thumbnails, generated by [DPlayer-thumbnails](https://github.com/MoePlayer/DPlayer-thumbnails)                                                       |
-| video.type           | 'auto'                             | values: 'auto', 'hls', 'flv', 'dash', 'webtorrent', 'normal' or other custom type, see [#MSE support](#mse-support)                                        |
-| video.customType     | -                                  | custom video type, see [#MSE support](#mse-support)                                                                                                        |
-| subtitle             | -                                  | external subtitle                                                                                                                                          |
-| subtitle.url         | `required`                         | subtitle url                                                                                                                                               |
-| subtitle.type        | 'webvtt'                           | subtitle type, values: 'webvtt', 'ass', but only webvtt is supported for now                                                                               |
-| subtitle.fontSize    | '20px'                             | subtitle font size                                                                                                                                         |
-| subtitle.bottom      | '40px'                             | the distance between the subtitle and player bottom, values like: '10px' '10%'                                                                             |
-| subtitle.color       | '#fff'                             | subtitle color                                                                                                                                             |
-| danmaku              | -                                  | showing danmaku                                                                                                                                            |
-| danmaku.id           | `required`                         | danmaku pool id, it must be unique                                                                                                                         |
-| danmaku.api          | `required`                         | see [#Danmaku API](#danmaku-api)                                                                                                                           |
-| danmaku.token        | -                                  | back end verification token                                                                                                                                |
-| danmaku.maximum      | -                                  | danmaku maximum quantity                                                                                                                                   |
-| danmaku.addition     | -                                  | additional danmaku, see [#bilibili danmaku](#bilibili-danmaku)                                                                                             |
-| danmaku.user         | 'DIYgod'                           | danmaku user name                                                                                                                                          |
-| danmaku.bottom       | -                                  | values like: '10px' '10%', the distance between the danmaku bottom and player bottom, in order to prevent warding off subtitle                             |
-| danmaku.unlimited    | false                              | display all danmaku even though danmaku overlap, notice that player will remember user setting, default setting will not work after user set it themselves |
-| danmaku.speedRate    | 1                                  | danmaku speed multiplier, the larger the faster                                                                                                            |
-| contextmenu          | []                                 | custom contextmenu                                                                                                                                         |
-| highlight            | []                                 | custom time markers upon progress bar                                                                                                                      |
-| mutex                | true                               | prevent to play multiple player at the same time, pause other players when this player start play                                                          |
+| Name                 | Default                            | Description                                                                                                                  |
+| -------------------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| container            | document.querySelector('.dplayer') | player container                                                                                                             |
+| live                 | false                              | enable live mode, see [#live](#live)                                                                                         |
+| autoplay             | false                              | video autoplay                                                                                                               |
+| theme                | '#b7daff'                          | main color                                                                                                                   |
+| loop                 | false                              | video loop                                                                                                                   |
+| lang                 | navigator.language.toLowerCase()   | values: 'en', 'zh-cn', 'zh-tw'                                                                                               |
+| screenshot           | false                              | enable screenshot, if true, video and video poster must enable Cross-Origin                                                  |
+| airplay              | false                              | enable airplay in Safari                                                                                                     |
+| chromecast           | false                              | enable Chromecast                                                                                                            |
+| hotkey               | true                               | enable hotkey, support FF, FR, volume control, play & pause                                                                  |
+| preload              | 'auto'                             | values: 'none', 'metadata', 'auto'                                                                                           |
+| volume               | 0.7                                | default volume, notice that player will remember user setting, default volume will not work after user set volume themselves |
+| playbackSpeed        | [0.5, 0.75, 1, 1.25, 1.5, 2]       | optional playback speed, or or you can set a custom one                                                                      |
+| logo                 | -                                  | showing logo in the top left corner, you can adjust its size and position by CSS                                             |
+| preventClickToggle   | false                              | prevent toggle video play/pause status when click player                                                                     |
+| video                | -                                  | video info                                                                                                                   |
+| video.quality        | -                                  | see [#Quality switching](#quality-switching)                                                                                 |
+| video.defaultQuality | -                                  | see [#Quality switching](#quality-switching)                                                                                 |
+| video.url            | -                                  | video url                                                                                                                    |
+| video.pic            | -                                  | video poster                                                                                                                 |
+| video.thumbnails     | -                                  | video thumbnails, generated by [DPlayer-thumbnails](https://github.com/MoePlayer/DPlayer-thumbnails)                         |
+| video.type           | 'auto'                             | values: 'auto', 'hls', 'flv', 'dash', 'webtorrent', 'normal' or other custom type, see [#MSE support](#mse-support)          |
+| video.customType     | -                                  | custom video type, see [#MSE support](#mse-support)                                                                          |
+| contextmenu          | []                                 | custom contextmenu                                                                                                           |
+| highlight            | []                                 | custom time markers upon progress bar                                                                                        |
+| mutex                | true                               | prevent to play multiple player at the same time, pause other players when this player start play                            |
 
 ```js
 const dp = new DPlayer({
@@ -625,7 +608,7 @@ const dp = new DPlayer({
 
 ## Live
 
-You can use DPlayer in live, but if you want live danmaku, you should prepare a WebSocket backend yourself.
+You can use DPlayer in live.
 
 <DPlayer :options="{
     live: true,
