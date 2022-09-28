@@ -9,12 +9,12 @@ module.exports = {
         '/zh/': {
             lang: 'zh-CN',
             title: 'DPlayer',
-            description: '🍭 Wow, such a lovely HTML5 danmaku video player',
+            description: '🍭 Wow, such a lovely HTML5 video player',
         },
         '/': {
             lang: 'en-US',
             title: 'DPlayer',
-            description: '🍭 Wow, such a lovely HTML5 danmaku video player',
+            description: '🍭 Wow, such a lovely HTML5 video player',
         },
     },
     head: [

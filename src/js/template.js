@@ -40,8 +40,6 @@ class Template {
         this.loadedBar = this.container.querySelector('.dplayer-loaded');
         this.playedBarWrap = this.container.querySelector('.dplayer-bar-wrap');
         this.playedBarTime = this.container.querySelector('.dplayer-bar-time');
-        this.danmaku = this.container.querySelector('.dplayer-danmaku');
-        this.danmakuLoading = this.container.querySelector('.dplayer-danloading');
         this.video = this.container.querySelector('.dplayer-video-current');
         this.bezel = this.container.querySelector('.dplayer-bezel-icon');
         this.playButton = this.container.querySelector('.dplayer-play-icon');
@@ -54,16 +52,8 @@ class Template {
         this.mask = this.container.querySelector('.dplayer-mask');
         this.loop = this.container.querySelector('.dplayer-setting-loop');
         this.loopToggle = this.container.querySelector('.dplayer-setting-loop .dplayer-toggle-setting-input');
-        this.showDanmaku = this.container.querySelector('.dplayer-setting-showdan');
-        this.showDanmakuToggle = this.container.querySelector('.dplayer-showdan-setting-input');
-        this.unlimitDanmaku = this.container.querySelector('.dplayer-setting-danunlimit');
-        this.unlimitDanmakuToggle = this.container.querySelector('.dplayer-danunlimit-setting-input');
         this.speed = this.container.querySelector('.dplayer-setting-speed');
         this.speedItem = this.container.querySelectorAll('.dplayer-setting-speed-item');
-        this.danmakuOpacityBar = this.container.querySelector('.dplayer-danmaku-bar-inner');
-        this.danmakuOpacityBarWrap = this.container.querySelector('.dplayer-danmaku-bar');
-        this.danmakuOpacityBarWrapWrap = this.container.querySelector('.dplayer-danmaku-bar-wrap');
-        this.danmakuOpacityBox = this.container.querySelector('.dplayer-setting-danmaku');
         this.dtime = this.container.querySelector('.dplayer-dtime');
         this.controller = this.container.querySelector('.dplayer-controller');
         this.commentInput = this.container.querySelector('.dplayer-comment-input');
@@ -101,9 +91,6 @@ class Template {
         this.infoUrl = this.container.querySelector('.dplayer-info-panel-item-url .dplayer-info-panel-item-data');
         this.infoResolution = this.container.querySelector('.dplayer-info-panel-item-resolution .dplayer-info-panel-item-data');
         this.infoDuration = this.container.querySelector('.dplayer-info-panel-item-duration .dplayer-info-panel-item-data');
-        this.infoDanmakuId = this.container.querySelector('.dplayer-info-panel-item-danmaku-id .dplayer-info-panel-item-data');
-        this.infoDanmakuApi = this.container.querySelector('.dplayer-info-panel-item-danmaku-api .dplayer-info-panel-item-data');
-        this.infoDanmakuAmount = this.container.querySelector('.dplayer-info-panel-item-danmaku-amount .dplayer-info-panel-item-data');
     }
 
     static NewNotice(text, opacity) {

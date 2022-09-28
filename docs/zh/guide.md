@@ -6,7 +6,7 @@ sidebar: auto
 
 # DPlayer
 
-🍭 Wow, such a lovely HTML5 danmaku video player
+🍭 Wow, such a lovely HTML5 video player
 
 <DPlayer :immediate="true"></DPlayer>
 
@@ -144,17 +144,6 @@ const dp = new DPlayer({
         bottom: '10%',
         color: '#b7daff',
     },
-    danmaku: {
-        id: '9E2E3368B56CDBB4',
-        api: 'https://api.prprpr.me/dplayer/',
-        token: 'tokendemo',
-        maximum: 1000,
-        addition: ['https://api.prprpr.me/dplayer/v3/bilibili?aid=4157142'],
-        user: 'DIYgod',
-        bottom: '15%',
-        unlimited: true,
-        speedRate: 0.5,
-    },
     contextmenu: [
         {
             text: 'custom1',
@@ -196,7 +185,7 @@ const dp = new DPlayer({
 
 -   `dp.on(event: string, handler: function)`: 绑定视频和播放器事件，见[#事件绑定](#事件绑定)
 
--   `dp.switchVideo(video, danmaku)`: 切换到其他视频
+-   `dp.switchVideo(video)`: 切换到其他视频
 
     ```js
     dp.switchVideo(
@@ -237,45 +226,6 @@ const dp = new DPlayer({
 -   `dp.video.paused`: 返回视频是否暂停
 
 -   支持大多数[原生 video 接口](http://www.w3schools.com/tags/ref_av_dom.asp)
-
--   `dp.danmaku`
-
--   `dp.danmaku.send(danmaku, callback: function)`: 提交一个新弹幕
-
-    ```js
-    dp.danmaku.send(
-        {
-            text: 'dplayer is amazing',
-            color: '#b7daff',
-            type: 'right', // should be `top` `bottom` or `right`
-        },
-        function () {
-            console.log('success');
-        }
-    );
-    ```
-
--   `dp.danmaku.draw(danmaku)`: 实时绘制一个新弹幕
-
-    ```js
-    dp.danmaku.draw({
-        text: 'DIYgod is amazing',
-        color: '#fff',
-        type: 'top',
-    });
-    ```
-
--   `dp.danmaku.opacity(percentage: number)`: 设置弹幕透明度，透明度值在 0 到 1 之间
-
-    ```js
-    dp.danmaku.opacity(0.5);
-    ```
-
--   `dp.danmaku.clear()`: 清除所有弹幕
-
--   `dp.danmaku.hide()`: 隐藏弹幕
-
--   `dp.danmaku.show()`: 显示弹幕
 
 -   `dp.fullScreen`: 两个类型：`web` 和 `browser`，默认类型是 `browser`
 
@@ -332,12 +282,6 @@ dp.on('ended', function () {
 -   screenshot
 -   thumbnails_show
 -   thumbnails_hide
--   danmaku_show
--   danmaku_hide
--   danmaku_clear
--   danmaku_loaded
--   danmaku_send
--   danmaku_opacity
 -   contextmenu_show
 -   contextmenu_hide
 -   notice_show
@@ -398,10 +342,6 @@ const dp = new DPlayer({
 
 ## 弹幕
 
-### 弹幕接口
-
-`danmaku.api`
-
 **现成的接口**
 
 链接: https://api.prprpr.me/dplayer/
@@ -411,21 +351,6 @@ const dp = new DPlayer({
 **自己搭建**
 
 [DPlayer-node](https://github.com/MoePlayer/DPlayer-node)
-
-### bilibili 弹幕
-
-`danmaku.addition`
-
-API: <https://api.prprpr.me/dplayer/v3/bilibili?aid=[aid]>
-
-```js
-const option = {
-    danmaku: {
-        // ...
-        addition: ['https://api.prprpr.me/dplayer/v3/bilibili?aid=[aid]'],
-    },
-};
-```
 
 ## MSE 支持
 
@@ -729,33 +654,11 @@ const dp = new DPlayer({
 const dp = new DPlayer({
     container: document.getElementById('dplayer'),
     live: true,
-    danmaku: true,
-    apiBackend: {
-        read: function (options) {
-            console.log('Pretend to connect WebSocket');
-            options.success([]);
-        },
-        send: function (options) {
-            console.log('Pretend to send danmaku via WebSocket', options.data);
-            options.success();
-        },
-    },
     video: {
         url: 'demo.m3u8',
         type: 'hls',
     },
 });
-```
-
-通过 WebSocket 获取到弹幕之后，通过 `dp.danmaku.draw` 绘制弹幕:
-
-```js
-const danmaku = {
-    text: 'Get a danmaku via WebSocket',
-    color: '#fff',
-    type: 'right',
-};
-dp.danmaku.draw(danmaku);
 ```
 
 ## 常见问题

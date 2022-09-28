@@ -43,16 +43,12 @@ function initPlayers() {
         screenshot: true,
         video: {
             url: 'http://static.smartisanos.cn/common/video/t1-ui.mp4',
-            pic: 'http://static.smartisanos.cn/pr/img/video/video_03_cc87ce5bdb.jpg',
-            thumbnails: 'http://static.smartisanos.cn/pr/img/video/video_03_cc87ce5bdb.jpg'
+            pic: 'https://i.loli.net/2019/06/06/5cf8c5d9c57b510947.png',
+            thumbnails: 'https://i.loli.net/2019/06/06/5cf8c5d9c57b510947.png'
         },
         subtitle: {
             url: 'subtitle test'
         },
-        danmaku: {
-            id: '9E2E3368B56CDBB4',
-            api: 'https://api.prprpr.me/dplayer/'
-        }
     });
     // dp1
     window.dp1 = new DPlayer({
@@ -62,7 +58,7 @@ function initPlayers() {
         video: {
             url: 'https://api.dogecloud.com/player/get.mp4?vcode=5ac682e6f8231991&userId=17&ext=.mp4',
             pic: 'https://i.loli.net/2019/06/06/5cf8c5d9c57b510947.png',
-            thumbnails: 'https://i.loli.net/2019/06/06/5cf8c5d9cec8510758.jpg'
+            thumbnails: 'https://i.loli.net/2019/06/06/5cf8c5d9c57b510947.png'
         },
         subtitle: {
             url: [
@@ -83,11 +79,6 @@ function initPlayers() {
             bottom: '10%',
             color: '#b7daff'
         },
-        danmaku: {
-            id: '9E2E3368B56CDBB4',
-            api: 'https://api.prprpr.me/dplayer/',
-            addition: ['https://s-sh-17-dplayercdn.oss.dogecdn.com/1678963.json']
-        }
     });
 
     // dp2
@@ -118,17 +109,6 @@ function initPlayers() {
             bottom: '10%',
             color: '#b7daff'
         },
-        danmaku: {
-            id: '9E2E3368B56CDBB4',
-            api: 'https://api.prprpr.me/dplayer/',
-            addition: ['https://s-sh-17-dplayercdn.oss.dogecdn.com/1678963.json'],
-            token: 'tokendemo',
-            maximum: 3000,
-            user: 'DIYgod',
-            bottom: '15%',
-            unlimited: true,
-            speedRate: 0.5,
-        },
         contextmenu: [
             {
                 text: 'custom contextmenu',
@@ -144,8 +124,6 @@ function initPlayers() {
         'volumechange', 'waiting',
         'screenshot',
         'thumbnails_show', 'thumbnails_hide',
-        'danmaku_show', 'danmaku_hide', 'danmaku_clear',
-        'danmaku_loaded', 'danmaku_send', 'danmaku_opacity',
         'contextmenu_show', 'contextmenu_hide',
         'notice_show', 'notice_hide',
         'quality_start', 'quality_end',
@@ -222,17 +200,6 @@ function initPlayers() {
     //     container: document.getElementById('dplayer6'),
     //     preload: 'none',
     //     live: true,
-    //     danmaku: true,
-    //     apiBackend: {
-    //         read: function (endpoint, callback) {
-    //             console.log('假装 WebSocket 连接成功');
-    //             callback();
-    //         },
-    //         send: function (endpoint, danmakuData, callback) {
-    //             console.log('假装通过 WebSocket 发送数据', danmakuData);
-    //             callback();
-    //         }
-    //     },
     //     video: {
     //         url: 'https://s-sh-17-dplayercdn.oss.dogecdn.com/hikarunara.m3u8',
     //         type: 'hls'
@@ -264,28 +231,8 @@ function clearPlayers() {
 }
 
 function switchDPlayer() {
-    if (dp2.options.danmaku.id !== '5rGf5Y2X55qu6Z2p') {
-        dp2.switchVideo({
-            url: 'http://static.smartisanos.cn/common/video/t1-ui.mp4',
-            pic: 'http://static.smartisanos.cn/pr/img/video/video_03_cc87ce5bdb.jpg',
-            type: 'auto',
-        }, {
-            id: '5rGf5Y2X55qu6Z2p',
-            api: 'https://api.prprpr.me/dplayer/',
-            maximum: 3000,
-            user: 'DIYgod'
-        });
-    } else {
-        dp2.switchVideo({
-            url: 'https://api.dogecloud.com/player/get.mp4?vcode=5ac682e6f8231991&userId=17&ext=.mp4',
-            pic: 'https://i.loli.net/2019/06/06/5cf8c5d9c57b510947.png',
-            thumbnails: 'https://i.loli.net/2019/06/06/5cf8c5d9cec8510758.jpg',
-            type: 'auto'
-        }, {
-            id: '9E2E3368B56CDBB42',
-            api: 'https://api.prprpr.me/dplayer/',
-            maximum: 3000,
-            user: 'DIYgod'
-        });
-    }
+    dp2.switchVideo({
+        url: 'http://static.smartisanos.cn/common/video/t1-ui.mp4',
+        type: 'auto',
+    });
 }

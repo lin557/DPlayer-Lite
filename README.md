@@ -3,7 +3,7 @@
 </p>
 <h1 align="center">DPlayer</h1>
 
-> 🍭 Wow, such a lovely HTML5 danmaku video player
+> 🍭 Wow, such a lovely HTML5 video player
 
 [![npm](https://img.shields.io/npm/v/dplayer.svg?style=flat-square)](https://www.npmjs.com/package/dplayer)
 [![npm](https://img.shields.io/npm/l/dplayer.svg?style=flat-square)](https://github.com/MoePlayer/DPlayer/blob/master/LICENSE)
@@ -14,7 +14,7 @@
 
 ![image](http://i.imgur.com/207ch36.jpg)
 
-DPlayer is a lovely HTML5 danmaku video player to help people build video and danmaku easily.
+DPlayer is a lovely HTML5 video player to help people build video easily.
 
 **DPlayer supports:**
 
@@ -29,7 +29,6 @@ DPlayer is a lovely HTML5 danmaku video player to help people build video and da
     -   WebM
     -   Ogg Theora Vorbis
 -   Features
-    -   Danmaku
     -   Screenshot
     -   Hotkeys
     -   Quality switching
@@ -63,13 +62,6 @@ Feel free to submit yours in [`Let me know!`](https://github.com/MoePlayer/DPlay
 ### Tooling
 
 -   [DPlayer-thumbnails](https://github.com/MoePlayer/DPlayer-thumbnails): generate video thumbnails
-
-### Danmaku api
-
--   [DPlayer-node](https://github.com/MoePlayer/DPlayer-node): Node.js
--   [laravel-danmaku](https://github.com/MoePlayer/laravel-danmaku): PHP
--   [dplayer-live-backend](https://github.com/Izumi-kun/dplayer-live-backend): Node.js, WebSocket live backend
--   [RailsGun](https://github.com/MoePlayer/RailsGun): Ruby
 
 ### Plugins
 

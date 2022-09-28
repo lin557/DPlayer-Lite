@@ -18,13 +18,6 @@ Let's make DPlayer better, feel free to submit yours in [`Let me know!`](https:/
 
 -   [DPlayer-thumbnails](https://github.com/MoePlayer/DPlayer-thumbnails): generate video thumbnails
 
-### Danmaku api
-
--   [DPlayer-node](https://github.com/MoePlayer/DPlayer-node): Node.js
--   [laravel-danmaku](https://github.com/MoePlayer/laravel-danmaku): PHP
--   [dplayer-live-backend](https://github.com/Izumi-kun/dplayer-live-backend): Node.js, WebSocket live backend
--   [RailsGun](https://github.com/MoePlayer/RailsGun): Ruby
-
 ### Plugins
 
 -   [DPlayer-for-typecho](https://github.com/volio/DPlayer-for-typecho): Typecho

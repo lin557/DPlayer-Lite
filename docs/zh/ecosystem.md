@@ -18,13 +18,6 @@ sidebar: auto
 
 -   [DPlayer-thumbnails](https://github.com/MoePlayer/DPlayer-thumbnails): generate video thumbnails
 
-### 弹幕接口
-
--   [DPlayer-node](https://github.com/MoePlayer/DPlayer-node): Node.js
--   [laravel-danmaku](https://github.com/MoePlayer/laravel-danmaku): PHP
--   [dplayer-live-backend](https://github.com/Izumi-kun/dplayer-live-backend): Node.js, WebSocket live backend
--   [RailsGun](https://github.com/MoePlayer/RailsGun): Ruby
-
 ### 插件
 
 -   [DPlayer-for-typecho](https://github.com/volio/DPlayer-for-typecho): Typecho

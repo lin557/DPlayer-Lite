@@ -32,24 +32,6 @@
         
     }
 
-    &.dplayer-no-danmaku {
-        .dplayer-controller .dplayer-icons .dplayer-setting .dplayer-setting-box {
-            .dplayer-setting-showdan,
-            .dplayer-setting-danmaku,
-            .dplayer-setting-danunlimit {
-                display: none;
-            }
-        }
-
-        .dplayer-controller .dplayer-icons .dplayer-comment {
-            display: none;
-        }
-
-        .dplayer-danmaku {
-            display: none;
-        }
-    }
-
     &.dplayer-live {
         .dplayer-time {
             display: none;
@@ -63,27 +45,15 @@
         .dplayer-setting-loop {
             display: none;
         }
-
-        &.dplayer-no-danmaku {
-            .dplayer-setting {
-                display: none;
-            }
-        }
     }
 
     &.dplayer-arrow {
-        .dplayer-danmaku {
-            font-size: 18px;
-        }
         .dplayer-icon {
             margin: 0 -3px;
         }
     }
 
     &.dplayer-playing {
-        .dplayer-danmaku .dplayer-danmaku-move {
-            animation-play-state: running;
-        }
 
         @media (min-width: 900px) {
             .dplayer-controller-mask {
@@ -107,14 +77,6 @@
     &.dplayer-loading {
         .dplayer-bezel .diplayer-loading-icon {
             display: block;
-        }
-    }
-
-    &.dplayer-loading,
-    &.dplayer-paused {
-        .dplayer-danmaku,
-        .dplayer-danmaku-move {
-            animation-play-state: paused;
         }
     }
 

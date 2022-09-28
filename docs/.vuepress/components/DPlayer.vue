@@ -36,13 +36,6 @@ export default {
                     thumbnails: 'https://i.loli.net/2019/06/06/5cf8c5d9cec8510758.jpg',
                     type: 'auto'
                 },
-                danmaku: {
-                    id: '9E2E3368B56CDBB4',
-                    api: 'https://api.prprpr.me/dplayer/',
-                    token: 'tokendemo',
-                    user: 'DIYgod',
-                    addition: ['https://s-sh-17-dplayercdn.oss.dogecdn.com/1678963.json']
-                },
                 contextmenu: [
                     {
                         text: 'custom1',

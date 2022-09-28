@@ -1,7 +1,7 @@
 {
     "name": "dplayer",
     "version": "1.27.0",
-    "description": "Wow, such a lovely HTML5 danmaku video player",
+    "description": "Wow, such a lovely HTML5 video player",
     "main": "dist/DPlayer.min.js",
     "scripts": {
         "start": "npm run dev",
@@ -23,7 +23,6 @@
     },
     "keywords": [
         "player",
-        "danmaku",
         "video",
         "html5"
     ],
@@ -73,7 +72,6 @@
         "yorkie": "^2.0.0"
     },
     "dependencies": {
-        "axios": "0.27.2",
         "balloon-css": "^1.0.3",
         "promise-polyfill": "8.2.3"
     }

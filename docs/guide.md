@@ -6,7 +6,7 @@ sidebar: auto
 
 # DPlayer
 
-🍭 Wow, such a lovely HTML5 danmaku video player
+🍭 Wow, such a lovely HTML5 video player
 
 <DPlayer :immediate="true"></DPlayer>
 
@@ -70,10 +70,6 @@ const dp = new DPlayer({
     },
     subtitle: {
         url: 'webvtt.vtt',
-    },
-    danmaku: {
-        id: 'demo',
-        api: 'https://api.prprpr.me/dplayer/',
     },
 });
 ```
@@ -154,17 +150,6 @@ const dp = new DPlayer({
         bottom: '10%',
         color: '#b7daff',
     },
-    danmaku: {
-        id: '9E2E3368B56CDBB4',
-        api: 'https://api.prprpr.me/dplayer/',
-        token: 'tokendemo',
-        maximum: 1000,
-        addition: ['https://api.prprpr.me/dplayer/v3/bilibili?aid=4157142'],
-        user: 'DIYgod',
-        bottom: '15%',
-        unlimited: true,
-        speedRate: 0.5,
-    },
     contextmenu: [
         {
             text: 'custom1',
@@ -206,7 +191,7 @@ const dp = new DPlayer({
 
 -   `dp.on(event: string, handler: function)`: bind video and player events, [see more details](https://dplayer.diygod.dev/guide.html#event-binding)
 
--   `dp.switchVideo(video, danmaku)`: switch to a new video
+-   `dp.switchVideo(video)`: switch to a new video
 
     ```js
     dp.switchVideo(
@@ -251,45 +236,6 @@ const dp = new DPlayer({
 -   `dp.video.paused`: returns whether the video paused
 
 -   most [native api](http://www.w3schools.com/tags/ref_av_dom.asp) are supported
-
--   `dp.danmaku`
-
--   `dp.danmaku.send(danmaku, callback: function)`: submit a new danmaku to back end
-
-    ```js
-    dp.danmaku.send(
-        {
-            text: 'dplayer is amazing',
-            color: '#b7daff',
-            type: 'right', // should be `top` `bottom` or `right`
-        },
-        function () {
-            console.log('success');
-        }
-    );
-    ```
-
--   `dp.danmaku.draw(danmaku)`: draw a new danmaku to player in real time
-
-    ```js
-    dp.danmaku.draw({
-        text: 'DIYgod is amazing',
-        color: '#fff',
-        type: 'top',
-    });
-    ```
-
--   `dp.danmaku.opacity(percentage: number)`: set danmaku opacity, opacity should between 0 and 1
-
-    ```js
-    dp.danmaku.opacity(0.5);
-    ```
-
--   `dp.danmaku.clear()`: clear all danmakus
-
--   `dp.danmaku.hide()`: hide danmaku
-
--   `dp.danmaku.show()`: show danmaku
 
 -   `dp.fullScreen`: two type: `web` or `browser`, the default one is `browser`
 
@@ -346,12 +292,6 @@ Player events
 -   screenshot
 -   thumbnails_show
 -   thumbnails_hide
--   danmaku_show
--   danmaku_hide
--   danmaku_clear
--   danmaku_loaded
--   danmaku_send
--   danmaku_opacity
 -   contextmenu_show
 -   contextmenu_hide
 -   notice_show
@@ -410,37 +350,6 @@ const dp = new DPlayer({
         thumbnails: 'thumbnails.jpg',
     },
 });
-```
-
-## Danmaku
-
-### Danmaku API
-
-`danmaku.api`
-
-**Ready-made API**
-
-url: https://api.prprpr.me/dplayer/
-
-Daily backup data: [DPlayer-data](https://github.com/DIYgod/DPlayer-data)
-
-**Setting up yourself**
-
-[DPlayer-node](https://github.com/MoePlayer/DPlayer-node)
-
-### bilibili danmaku
-
-`danmaku.addition`
-
-API: <https://api.prprpr.me/dplayer/v3/bilibili?aid=[aid]>
-
-```js
-const option = {
-    danmaku: {
-        // ...
-        addition: ['https://api.prprpr.me/dplayer/v3/bilibili?aid=[aid]'],
-    },
-};
 ```
 
 ## MSE support
@@ -745,33 +654,11 @@ Init player:
 const dp = new DPlayer({
     container: document.getElementById('dplayer'),
     live: true,
-    danmaku: true,
-    apiBackend: {
-        read: function (options) {
-            console.log('Pretend to connect WebSocket');
-            options.success([]);
-        },
-        send: function (options) {
-            console.log('Pretend to send danmaku via WebSocket', options.data);
-            options.success();
-        },
-    },
     video: {
         url: 'demo.m3u8',
         type: 'hls',
     },
 });
-```
-
-Draw danmaku after getting a danmaku via WebSocket:
-
-```js
-const danmaku = {
-    text: 'Get a danmaku via WebSocket',
-    color: '#fff',
-    type: 'right',
-};
-dp.danmaku.draw(danmaku);
 ```
 
 ## FAQ

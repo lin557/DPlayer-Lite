@@ -5,7 +5,6 @@ import handleOption from './options';
 import { i18n } from './i18n';
 import Template from './template';
 import Icons from './icons';
-import Danmaku from './danmaku';
 import Events from './events';
 import FullScreen from './fullscreen';
 import User from './user';
@@ -16,7 +15,6 @@ import Timer from './timer';
 import Bezel from './bezel';
 import Controller from './controller';
 import Setting from './setting';
-import Comment from './comment';
 import HotKey from './hotkey';
 import ContextMenu from './contextmenu';
 import InfoPanel from './info-panel';
@@ -45,9 +43,6 @@ class DPlayer {
         this.container = this.options.container;
 
         this.container.classList.add('dplayer');
-        if (!this.options.danmaku) {
-            this.container.classList.add('dplayer-no-danmaku');
-        }
         if (this.options.live) {
             this.container.classList.add('dplayer-live');
         } else {
@@ -115,45 +110,6 @@ class DPlayer {
 
         this.controller = new Controller(this);
 
-        if (this.options.danmaku) {
-            this.danmaku = new Danmaku({
-                player: this,
-                container: this.template.danmaku,
-                opacity: this.user.get('opacity'),
-                callback: () => {
-                    setTimeout(() => {
-                        this.template.danmakuLoading.style.display = 'none';
-
-                        // autoplay
-                        if (this.options.autoplay) {
-                            this.play();
-                        }
-                    }, 0);
-                },
-                error: (msg) => {
-                    this.notice(msg);
-                },
-                apiBackend: this.options.apiBackend,
-                borderColor: this.options.theme,
-                height: this.arrow ? 24 : 30,
-                time: () => this.video.currentTime,
-                unlimited: this.user.get('unlimited'),
-                api: {
-                    id: this.options.danmaku.id,
-                    address: this.options.danmaku.api,
-                    token: this.options.danmaku.token,
-                    maximum: this.options.danmaku.maximum,
-                    addition: this.options.danmaku.addition,
-                    user: this.options.danmaku.user,
-                    speedRate: this.options.danmaku.speedRate,
-                },
-                events: this.events,
-                tran: (msg) => this.tran(msg),
-            });
-
-            this.comment = new Comment(this);
-        }
-
         this.setting = new Setting(this);
         this.plugins = {};
         this.docClickFun = () => {
@@ -177,7 +133,7 @@ class DPlayer {
 
         this.infoPanel = new InfoPanel(this);
 
-        if (!this.danmaku && this.options.autoplay) {
+        if (this.options.autoplay) {
             this.play();
         }
 
@@ -200,10 +156,6 @@ class DPlayer {
         }
 
         this.video.currentTime = time;
-
-        if (this.danmaku) {
-            this.danmaku.seek();
-        }
 
         this.bar.set('played', time / this.video.duration, 'width');
         this.template.ptime.innerHTML = utils.secondToTime(time);
@@ -232,9 +184,7 @@ class DPlayer {
         this.timer.enable('loading');
         this.container.classList.remove('dplayer-paused');
         this.container.classList.add('dplayer-playing');
-        if (this.danmaku) {
-            this.danmaku.play();
-        }
+
         if (this.options.mutex) {
             for (let i = 0; i < instances.length; i++) {
                 if (this !== instances[i]) {
@@ -263,9 +213,6 @@ class DPlayer {
         this.timer.disable('loading');
         this.container.classList.remove('dplayer-playing');
         this.container.classList.add('dplayer-paused');
-        if (this.danmaku) {
-            this.danmaku.pause();
-        }
     }
 
     switchVolumeIcon() {
@@ -328,30 +275,12 @@ class DPlayer {
      * Switch to a new video
      *
      * @param {Object} video - new video info
-     * @param {Object} danmaku - new danmaku info
      */
-    switchVideo(video, danmakuAPI) {
+    switchVideo(video) {
         this.pause();
         this.video.poster = video.pic ? video.pic : '';
         this.video.src = video.url;
         this.initMSE(this.video, video.type || 'auto');
-        if (danmakuAPI) {
-            this.template.danmakuLoading.style.display = 'block';
-            this.bar.set('played', 0, 'width');
-            this.bar.set('loaded', 0, 'width');
-            this.template.ptime.innerHTML = '00:00';
-            this.template.danmaku.innerHTML = '';
-            if (this.danmaku) {
-                this.danmaku.reload({
-                    id: danmakuAPI.id,
-                    address: danmakuAPI.api,
-                    token: danmakuAPI.token,
-                    maximum: danmakuAPI.maximum,
-                    addition: danmakuAPI.addition,
-                    user: danmakuAPI.user,
-                });
-            }
-        }
     }
 
     initMSE(video, type) {
@@ -518,9 +447,6 @@ class DPlayer {
                 this.seek(0);
                 this.play();
             }
-            if (this.danmaku) {
-                this.danmaku.danIndex = 0;
-            }
         });
 
         this.on('play', () => {
@@ -659,9 +585,6 @@ class DPlayer {
     }
 
     resize() {
-        if (this.danmaku) {
-            this.danmaku.resize();
-        }
         if (this.controller.thumbnails) {
             this.controller.thumbnails.resize(160, (this.video.videoHeight / this.video.videoWidth) * 160, this.template.barWrap.offsetWidth);
         }
