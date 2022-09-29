@@ -367,6 +367,8 @@ class DPlayer {
 
     initVideo(video, type) {
         this.initMSE(video, type);
+        // Failed to execute 'toBlob' on 'HTMLCanvasElement': Tainted canvases may not be exported
+        this.video.setAttribute('crossorigin', 'Anonymous');
 
         /**
          * video events

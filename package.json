@@ -18,7 +18,7 @@
         "dist"
     ],
     "repository": {
-        "url": "git+https://github.com/DIYgod/DPlayer.git",
+        "url": "git+https://github.com/lin557/DPlayer-Lite.git",
         "type": "git"
     },
     "keywords": [
@@ -32,9 +32,9 @@
     "author": "DIYgod",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/DIYgod/DPlayer/issues"
+        "url": "https://github.com/lin557/DPlayer-Lite/issues"
     },
-    "homepage": "https://github.com/DIYgod/DPlayer#readme",
+    "homepage": "https://github.com/lin557/DPlayer-Lite#readme",
     "devDependencies": {
         "@babel/core": "^7.6.0",
         "@babel/preset-env": "^7.4.5",
