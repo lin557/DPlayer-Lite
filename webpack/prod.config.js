@@ -11,7 +11,7 @@ module.exports = {
     devtool: 'source-map',
 
     entry: {
-        DPlayer: './src/js/index.js',
+        'dplayer-lite': './src/js/index.js',
     },
 
     output: {

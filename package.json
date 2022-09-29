@@ -1,8 +1,9 @@
 {
     "name": "dplayer-lite",
-    "version": "1.27.1",
+    "version": "1.27.3",
     "description": "Wow, such a lovely HTML5 video player",
-    "main": "dist/DPlayer.min.js",
+    "main": "dist/dplayer-lite.min.js",
+    "types": "d.ts/dplayer-lite.d.ts",
     "scripts": {
         "start": "npm run dev",
         "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --progress",
@@ -15,7 +16,8 @@
         "docs:build": "vuepress build docs"
     },
     "files": [
-        "dist"
+        "dist",
+        "d.ts"
     ],
     "repository": {
         "url": "git+https://github.com/lin557/DPlayer-Lite.git",
