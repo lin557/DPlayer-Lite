@@ -11,14 +11,9 @@
 >
 > 🍭 Add muted
 
-[![npm](https://img.shields.io/npm/v/dplayer.svg?style=flat-square)](https://www.npmjs.com/package/dplayer)
-[![npm](https://img.shields.io/npm/l/dplayer.svg?style=flat-square)](https://github.com/MoePlayer/DPlayer/blob/master/LICENSE)
-[![npm](https://img.shields.io/npm/dt/dplayer.svg?style=flat-square)](https://www.npmjs.com/package/dplayer)
-[![size](https://badge-size.herokuapp.com/MoePlayer/DPlayer/master/dist/DPlayer.min.js?compression=gzip&style=flat-square)](https://github.com/MoePlayer/DPlayer/tree/master/dist)
-
 ## Introduction
 
-![image](http://i.imgur.com/207ch36.jpg)
+![image](docs/screenshot.png)
 
 DPlayer is a lovely HTML5 video player to help people build video easily.
 
