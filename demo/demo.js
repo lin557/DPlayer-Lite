@@ -37,6 +37,8 @@ function initPlayers() {
         ]
     });
 
+    console.log(dp2)
+
     const events = [
         'abort', 'canplay', 'canplaythrough', 'durationchange', 'emptied', 'ended', 'error',
         'loadeddata', 'loadedmetadata', 'loadstart', 'mozaudioavailable', 'pause', 'play',

@@ -1,6 +1,6 @@
 {
     "name": "dplayer-lite",
-    "version": "1.27.3",
+    "version": "1.27.0",
     "description": "Wow, such a lovely HTML5 video player",
     "main": "dist/dplayer-lite.min.js",
     "types": "d.ts/dplayer-lite.d.ts",
@@ -13,7 +13,9 @@
         "format:staged": "eslint \"**/*.js\" --fix && pretty-quick --staged --verbose --pattern \"**/*.{js,json,md}\"",
         "format:check": "eslint \"**/*.js\" && prettier-check \"**/*.{js,json,md}\"",
         "docs:dev": "vuepress dev docs",
-        "docs:build": "vuepress build docs"
+        "docs:build": "vuepress build docs",
+        "publish:bate": "npm run build && npm publish --tag beta",
+        "publish:last": "npm run build && npm publish"
     },
     "files": [
         "dist",
