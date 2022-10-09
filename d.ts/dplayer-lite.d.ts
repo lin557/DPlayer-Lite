@@ -67,6 +67,7 @@ export interface DPlayerOptions {
   muted?: boolean | undefined
   mutex?: boolean | undefined
   video?: DPlayerVideo | undefined
+  controls?: boolean | undefined,
   contextmenu?: DPlayerContextMenuItem[] | undefined
   highlight?: DPlayerHighLightItem[] | undefined
 }
@@ -144,7 +145,7 @@ export default class DPlayer {
 
   speed(rate: number): void
 
-  volume(percentage?: number, nonotice?: boolean): void
+  volume(percentage?: number, nonotice?: boolean): number
 
   buildOptions(DPlayerOptions): DPlayerOptions
 }

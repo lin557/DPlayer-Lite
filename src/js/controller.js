@@ -330,13 +330,17 @@ class Controller {
     }
 
     setAutoHide() {
-        this.show();
-        clearTimeout(this.autoHideTimer);
-        this.autoHideTimer = setTimeout(() => {
-            if (this.player.video.played.length && !this.player.paused && !this.disableAutoHide) {
-                this.hide();
-            }
-        }, 3000);
+        if (this.player && !this.player.options.controls) {
+            this.hide();
+        } else {
+            this.show();
+            clearTimeout(this.autoHideTimer);
+            this.autoHideTimer = setTimeout(() => {
+                if (this.player.video.played.length && !this.player.paused && !this.disableAutoHide) {
+                    this.hide();
+                }
+            }, 3000);
+        }
     }
 
     show() {

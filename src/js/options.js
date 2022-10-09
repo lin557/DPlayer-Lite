@@ -16,6 +16,7 @@ export default (options) => {
         playbackSpeed: [0.5, 0.75, 1, 1.25, 1.5, 2],
         video: {},
         contextmenu: [],
+        controls: true,
         muted: false,
         mutex: true,
         pluginOptions: { hls: {}, flv: {}, dash: {}, webtorrent: {} },

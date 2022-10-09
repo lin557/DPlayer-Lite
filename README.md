@@ -26,7 +26,8 @@ DPlayer is a lovely HTML5 video player to help people build video easily.
     -   [WebTorrent](https://github.com/webtorrent/webtorrent)
     -   Any other custom streaming formats
 -   Media formats
-    -   MP4 H.264
+    -   MP4 H.264/AAC
+    -   MKV H.264/AAC
     -   WebM
     -   Ogg Theora Vorbis
 -   Features
@@ -51,6 +52,7 @@ You can custom your player instance by those options
 | autoplay             | false                              | video autoplay                                                                                                               |
 | theme                | '#b7daff'                          | main color                                                                                                                   |
 | loop                 | false                              | video loop                                                                                                                   |
+| controls             | true                               | show or hide control bar                                                                                                     |
 | lang                 | navigator.language.toLowerCase()   | values: 'en', 'zh-cn', 'zh-tw'                                                                                               |
 | screenshot           | false                              | enable screenshot, if true, video and video poster must enable Cross-Origin                                                  |
 | airplay              | false                              | enable airplay in Safari                                                                                                     |
