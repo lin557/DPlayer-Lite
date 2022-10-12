@@ -138,6 +138,10 @@ class Controller {
         }
     }
 
+    toggleScreen(type = 'browser') {
+        this.player.fullScreen.toggle(type);
+    }
+
     initFullButton() {
         this.player.template.browserFullButton.addEventListener('click', () => {
             this.player.fullScreen.toggle('browser');
@@ -195,27 +199,31 @@ class Controller {
         }
     }
 
+    snapshot() {
+        const canvas = document.createElement('canvas');
+        canvas.width = this.player.video.videoWidth;
+        canvas.height = this.player.video.videoHeight;
+        canvas.getContext('2d').drawImage(this.player.video, 0, 0, canvas.width, canvas.height);
+
+        let dataURL;
+        canvas.toBlob((blob) => {
+            dataURL = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = dataURL;
+            link.download = 'snapshot.png';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(dataURL);
+            this.player.events.trigger('screenshot', dataURL);
+        });
+    }
+
     initScreenshotButton() {
         if (this.player.options.screenshot) {
             this.player.template.camareButton.addEventListener('click', () => {
-                const canvas = document.createElement('canvas');
-                canvas.width = this.player.video.videoWidth;
-                canvas.height = this.player.video.videoHeight;
-                canvas.getContext('2d').drawImage(this.player.video, 0, 0, canvas.width, canvas.height);
-
-                let dataURL;
-                canvas.toBlob((blob) => {
-                    dataURL = URL.createObjectURL(blob);
-                    const link = document.createElement('a');
-                    link.href = dataURL;
-                    link.download = 'screenshot.png';
-                    link.style.display = 'none';
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    URL.revokeObjectURL(dataURL);
-                    this.player.events.trigger('screenshot', dataURL);
-                });
+                this.snapshot();
             });
         }
     }

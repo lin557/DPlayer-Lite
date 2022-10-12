@@ -28,6 +28,7 @@ class Events {
             'waiting',
         ];
         this.playerEvents = [
+            'ready',
             'screenshot',
             'contextmenu_show',
             'contextmenu_hide',
@@ -54,6 +55,7 @@ class Events {
     }
 
     trigger(name, info) {
+        // console.log(this.events[name]);
         if (this.events[name] && this.events[name].length) {
             for (let i = 0; i < this.events[name].length; i++) {
                 this.events[name][i](info);

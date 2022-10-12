@@ -50,6 +50,7 @@ function initPlayers() {
         'notice_show', 'notice_hide',
         'quality_start', 'quality_end',
         'destroy',
+        'ready',
         'resize',
         'fullscreen', 'fullscreen_cancel', 'webfullscreen', 'webfullscreen_cancel',
     ];

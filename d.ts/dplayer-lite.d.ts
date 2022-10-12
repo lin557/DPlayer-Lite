@@ -9,7 +9,6 @@ export as namespace DPlayer;
 export type Lang = 'en' | 'zh-cn' | 'zh-tw'
 export type Preload = 'none' | 'metadata' | 'auto'
 export type VideoType = 'auto' | 'hls' | 'flv' | 'dash' | 'webtorrent' | 'normal'
-export type SubTitleType = 'webvtt' | 'ass'
 export type DirectionType = 'top' | 'right' | 'bottom'
 export type FullScreenType = 'web' | 'browser'
 
@@ -37,6 +36,7 @@ export enum DPlayerEvents {
   timeupdate = 'timeupdate',
   volumechange = 'volumechange',
   waiting = 'waiting',
+  ready = 'ready',
   screenshot = 'screenshot',
   contextmenu_show = 'contextmenu_show',
   contextmenu_hide = 'contextmenu_hide',
@@ -105,47 +105,60 @@ export interface DPlayerVideo {
 }
 
 export interface FullScreen {
+
   request(type: FullScreenType): void
 
   cancel(type: FullScreenType): void
+
+  toggle(type: FullScreenType): void
 }
 
 export default class DPlayer {
   events: any
-  video: HTMLVideoElement
   fullScreen: FullScreen
+  video: HTMLVideoElement
 
   constructor(options: DPlayerOptions)
 
   controller: {
-    setAutoHide(): void
-    show(): void
+
     hide(): void
+
     isShow(): boolean
+    
+    setAutoHide(): void
+
+    show(): void
+
     toggle(): void
   }
 
-  play(): void
-
-  pause(): void
-
-  seek(time: number): void
-
-  toggle(): void
-
-  on(event: string, handler: () => void): void
-
-  switchVideo(video: DPlayerVideo): void
+  buildOptions(DPlayerOptions): DPlayerOptions
+  
+  destroy(): void
 
   notice(text: string, time: number, opacity: number): void
 
-  switchQuality(index: number): void
+  on(event: string, handler: () => void): void
 
-  destroy(): void
+  pause(): void
+
+  play(): void
+
+  seek(time: number): void
+
+  snapshot(): void
 
   speed(rate: number): void
 
+  switchQuality(index: number): void
+
+  switchVideo(video: DPlayerVideo): void
+
+  toggle(): void
+
+  toggleScreen(type: FullScreenType = 'browser'): void
+
   volume(percentage?: number, nonotice?: boolean): number
 
-  buildOptions(DPlayerOptions): DPlayerOptions
 }

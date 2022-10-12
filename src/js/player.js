@@ -92,12 +92,19 @@ class DPlayer {
 
         this.infoPanel = new InfoPanel(this);
 
-        if (this.options.autoplay) {
-            this.play();
-        }
+        this.timeStart();
 
         index++;
         instances.push(this);
+    }
+
+    timeStart() {
+        setTimeout(() => {
+            this.events.trigger('ready');
+            if (this.options.autoplay) {
+                this.play();
+            }
+        }, 0);
     }
 
     /**
@@ -543,6 +550,14 @@ class DPlayer {
 
     speed(rate) {
         this.video.playbackRate = rate;
+    }
+
+    snapshot() {
+        this.controller.snapshot();
+    }
+
+    toggleScreen(type = 'browser') {
+        this.controller.toggleScreen(type);
     }
 
     destroy() {
