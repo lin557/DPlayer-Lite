@@ -32,6 +32,8 @@ class Events {
             'screenshot',
             'contextmenu_show',
             'contextmenu_hide',
+            'fetch_start',
+            'fetch_stop',
             'notice_show',
             'notice_hide',
             'quality_start',

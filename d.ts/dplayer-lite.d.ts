@@ -40,6 +40,8 @@ export enum DPlayerEvents {
   screenshot = 'screenshot',
   contextmenu_show = 'contextmenu_show',
   contextmenu_hide = 'contextmenu_hide',
+  fetch_start = 'fetch_start',
+  fetch_stop = 'fetch_stop',
   notice_show = 'notice_show',
   notice_hide = 'notice_hide',
   quality_start = 'quality_start',
@@ -116,6 +118,7 @@ export interface FullScreen {
 export default class DPlayer {
   events: any
   fullScreen: FullScreen
+  options: DPlayerOptions
   video: HTMLVideoElement
 
   constructor(options: DPlayerOptions)
@@ -136,6 +139,8 @@ export default class DPlayer {
   buildOptions(DPlayerOptions): DPlayerOptions
   
   destroy(): void
+
+  muted(): void
 
   notice(text: string, time: number, opacity: number): void
 

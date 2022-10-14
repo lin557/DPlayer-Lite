@@ -216,6 +216,12 @@ class DPlayer {
         return this.video.volume;
     }
 
+    muted() {
+        this.video.muted = true;
+        this.template.volumeIcon.innerHTML = Icons.volumeOff;
+        this.bar.set('volume', 0, 'width');
+    }
+
     /**
      * Toggle between play and pause
      */
