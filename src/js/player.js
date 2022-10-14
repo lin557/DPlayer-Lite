@@ -216,10 +216,19 @@ class DPlayer {
         return this.video.volume;
     }
 
-    muted() {
-        this.video.muted = true;
-        this.template.volumeIcon.innerHTML = Icons.volumeOff;
-        this.bar.set('volume', 0, 'width');
+    muted(mute) {
+        if (mute === null || mute === undefined) {
+            return this.video.muted;
+        }
+        this.video.muted = mute;
+        if (mute) {
+            this.template.volumeIcon.innerHTML = Icons.volumeOff;
+            this.bar.set('volume', 0, 'width');
+        } else {
+            this.switchVolumeIcon();
+            this.bar.set('volume', this.volume(), 'width');
+        }
+        return this.video.muted;
     }
 
     /**

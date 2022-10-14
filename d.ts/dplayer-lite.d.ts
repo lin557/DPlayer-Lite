@@ -140,7 +140,7 @@ export default class DPlayer {
   
   destroy(): void
 
-  muted(): void
+  muted(mute?: boolean): boolean
 
   notice(text: string, time: number, opacity: number): void
 
@@ -162,7 +162,7 @@ export default class DPlayer {
 
   toggle(): void
 
-  toggleScreen(type: FullScreenType = 'browser'): void
+  toggleScreen(type: FullScreenType): void
 
   volume(percentage?: number, nonotice?: boolean): number
 
