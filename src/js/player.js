@@ -37,6 +37,7 @@ class DPlayer {
         this.tran = new i18n(this.options.lang).tran;
         this.events = new Events();
         this.container = this.options.container;
+        this.noticeList = {};
 
         this.container.classList.add('dplayer');
         if (this.options.live) {
@@ -203,7 +204,7 @@ class DPlayer {
             const formatPercentage = `${(percentage * 100).toFixed(0)}%`;
             this.template.volumeBarWrapWrap.dataset.balloon = formatPercentage;
             if (!nonotice) {
-                this.notice(`${this.tran('volume')} ${(percentage * 100).toFixed(0)}%`);
+                this.notice(`${this.tran('volume')} ${(percentage * 100).toFixed(0)}%`, undefined, undefined, 'volume');
             }
 
             this.video.volume = percentage;
@@ -415,7 +416,7 @@ class DPlayer {
                 // Not a video load error, may be poster load failed, see #307
                 return;
             }
-            this.tran && this.notice && this.type !== 'webtorrent' && this.notice(this.tran('video-failed'), -1);
+            this.tran && this.notice && this.type !== 'webtorrent' && this.notice(this.tran('video-failed'));
         });
 
         // video end
@@ -450,8 +451,8 @@ class DPlayer {
         });
 
         for (let i = 0; i < this.events.videoEvents.length; i++) {
-            video.addEventListener(this.events.videoEvents[i], () => {
-                this.events.trigger(this.events.videoEvents[i]);
+            video.addEventListener(this.events.videoEvents[i], (e) => {
+                this.events.trigger(this.events.videoEvents[i], e);
             });
         }
 
@@ -493,7 +494,7 @@ class DPlayer {
         this.video = videoEle;
         this.initVideo(this.video, this.quality.type || this.options.video.type);
         this.seek(this.prevVideo.currentTime);
-        this.notice(`${this.tran('switching-quality').replace('%q', this.quality.name)}`, -1);
+        this.notice(`${this.tran('switching-quality').replace('%q', this.quality.name)}`, -1, undefined, 'switch-quality');
         this.events.trigger('quality_start', this.quality);
 
         this.on('canplay', () => {
@@ -508,7 +509,7 @@ class DPlayer {
                     this.video.play();
                 }
                 this.prevVideo = null;
-                this.notice(`${this.tran('switched-quality').replace('%q', this.quality.name)}`);
+                this.notice(`${this.tran('switched-quality').replace('%q', this.quality.name)}`, undefined, undefined, 'switch-quality');
                 this.switchingQuality = false;
 
                 this.events.trigger('quality_end');
@@ -537,14 +538,27 @@ class DPlayer {
         });
     }
 
-    notice(text, time = 2000, opacity = 0.8) {
-        const notice = Template.NewNotice(text, opacity);
-
-        this.template.noticeList.appendChild(notice);
-        this.events.trigger('notice_show', notice);
+    notice(text, time = 2000, opacity = 0.8, id) {
+        let oldNoticeEle;
+        if (id) {
+            oldNoticeEle = document.getElementById(`dplayer-notice-${id}`);
+            if (oldNoticeEle) {
+                oldNoticeEle.innerHTML = text;
+            }
+            if (this.noticeList[id]) {
+                clearTimeout(this.noticeList[id]);
+                this.noticeList[id] = null;
+            }
+        }
+        if (!oldNoticeEle) {
+            const notice = Template.NewNotice(text, opacity, id);
+            this.template.noticeList.appendChild(notice);
+            oldNoticeEle = notice;
+        }
+        this.events.trigger('notice_show', oldNoticeEle);
 
         if (time > 0) {
-            setTimeout(
+            this.noticeList[id] = setTimeout(
                 (function (e, dp) {
                     return () => {
                         e.addEventListener('animationend', () => {
@@ -552,8 +566,9 @@ class DPlayer {
                         });
                         e.classList.add('remove-notice');
                         dp.events.trigger('notice_hide');
+                        dp.noticeList[id] = null;
                     };
-                })(notice, this),
+                })(oldNoticeEle, this),
                 time
             );
         }

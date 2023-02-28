@@ -27,7 +27,7 @@ class HotKey {
                         if (this.player.options.live) {
                             break;
                         }
-                        this.player.seek(this.player.video.currentTime - 5);
+                        this.player.seek(this.player.video.currentTime - 10);
                         this.player.controller.setAutoHide();
                         break;
                     case 39:
@@ -35,7 +35,7 @@ class HotKey {
                         if (this.player.options.live) {
                             break;
                         }
-                        this.player.seek(this.player.video.currentTime + 5);
+                        this.player.seek(this.player.video.currentTime + 10);
                         this.player.controller.setAutoHide();
                         break;
                     case 38:
