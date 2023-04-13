@@ -119,7 +119,7 @@ export default class DPlayer {
   events: any
   fullScreen: FullScreen
   options: DPlayerOptions
-  paused: number
+  paused: boolean
   video: HTMLVideoElement
 
   constructor(options: DPlayerOptions)
