@@ -32,6 +32,9 @@ class ContextMenu {
     }
 
     show(x, y) {
+        if (this.player.options.contextmenu === null || this.player.options.contextmenu.length === 0) {
+            return;
+        }
         this.player.template.menu.classList.add('dplayer-menu-show');
 
         const clientRect = this.player.container.getBoundingClientRect();

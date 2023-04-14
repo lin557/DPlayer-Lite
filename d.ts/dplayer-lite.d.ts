@@ -58,6 +58,7 @@ export interface DPlayerOptions {
   container: HTMLElement | null
   live?: boolean | undefined
   autoplay?: boolean | undefined
+  debug?: boolean | undefined
   theme?: string | undefined
   loop?: boolean | undefined
   lang?: Lang | string | undefined

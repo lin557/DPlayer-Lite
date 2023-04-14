@@ -19,6 +19,7 @@ export default (options) => {
         controls: true,
         muted: false,
         mutex: true,
+        debug: false,
         pluginOptions: { hls: {}, flv: {}, dash: {}, webtorrent: {} },
         preventClickToggle: false,
     };
@@ -38,14 +39,16 @@ export default (options) => {
         options.lang = options.lang.toLowerCase();
     }
 
-    options.contextmenu = options.contextmenu.concat([
-        {
-            key: 'video-info',
-            click: (player) => {
-                player.infoPanel.triggle();
+    if (options.debug) {
+        options.contextmenu = options.contextmenu.concat([
+            {
+                key: 'video-info',
+                click: (player) => {
+                    player.infoPanel.triggle();
+                },
             },
-        },
-    ]);
+        ]);
+    }
 
     return options;
 };
