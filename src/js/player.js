@@ -74,9 +74,11 @@ class DPlayer {
         this.plugins = {};
         this.docClickFun = () => {
             this.focus = false;
+            this.contextmenu.hide();
         };
         this.containerClickFun = () => {
             this.focus = true;
+            this.contextmenu.hide();
         };
         document.addEventListener('click', this.docClickFun, true);
         this.container.addEventListener('click', this.containerClickFun, true);

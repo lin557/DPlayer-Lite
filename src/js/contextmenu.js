@@ -23,7 +23,6 @@ class ContextMenu {
 
             const clientRect = this.player.container.getBoundingClientRect();
             this.show(event.clientX - clientRect.left, event.clientY - clientRect.top);
-
             this.player.template.mask.addEventListener('click', () => {
                 this.hide();
             });
