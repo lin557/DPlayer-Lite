@@ -22,6 +22,7 @@ export default (options) => {
         debug: false,
         pluginOptions: { hls: {}, flv: {}, dash: {}, webtorrent: {} },
         preventClickToggle: false,
+        loading: true,
     };
     for (const defaultKey in defaultOption) {
         if (defaultOption.hasOwnProperty(defaultKey) && !options.hasOwnProperty(defaultKey)) {

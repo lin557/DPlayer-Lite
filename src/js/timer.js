@@ -31,7 +31,7 @@ class Timer {
         let currentPlayPos = 0;
         let bufferingDetected = false;
         this.loadingChecker = setInterval(() => {
-            if (this.enableloadingChecker) {
+            if (this.enableloadingChecker && this.player.options.loading) {
                 // whether the video is buffering
                 currentPlayPos = this.player.video.currentTime;
                 if (!bufferingDetected && currentPlayPos === lastPlayPos && !this.player.video.paused) {

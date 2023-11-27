@@ -65,6 +65,7 @@ class DPlayer {
         this.bar = new Bar(this.template);
 
         this.bezel = new Bezel(this.template.bezel);
+        this.transition = true;
 
         this.fullScreen = new FullScreen(this);
 
@@ -136,7 +137,9 @@ class DPlayer {
     play(fromNative) {
         this.paused = false;
         if (this.video.paused && !utils.isMobile) {
-            this.bezel.switch(Icons.play);
+            if (this.transition) {
+                this.bezel.switch(Icons.play);
+            }
         }
 
         this.template.playButton.innerHTML = Icons.pause;
@@ -171,7 +174,9 @@ class DPlayer {
         this.container.classList.remove('dplayer-loading');
 
         if (!this.video.paused && !utils.isMobile) {
-            this.bezel.switch(Icons.pause);
+            if (this.transition) {
+                this.bezel.switch(Icons.pause);
+            }
         }
 
         this.template.playButton.innerHTML = Icons.play;

@@ -73,6 +73,7 @@ export interface DPlayerOptions {
   controls?: boolean | undefined,
   contextmenu?: DPlayerContextMenuItem[] | undefined
   highlight?: DPlayerHighLightItem[] | undefined
+  loading?: boolean
 }
 
 export interface DPlayerDanmakuItem {
@@ -84,7 +85,7 @@ export interface DPlayerDanmakuItem {
 export interface DPlayerContextMenuItem {
   text: string
   link?: string | undefined;
-  click?: (() => void) | undefined;
+  click?: ((player: any) => void) | undefined;
 }
 
 export interface DPlayerHighLightItem {
@@ -122,6 +123,7 @@ export default class DPlayer {
   options: DPlayerOptions
   paused: boolean
   video: HTMLVideoElement
+  transition: boolean
 
   constructor(options: DPlayerOptions)
 

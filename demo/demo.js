@@ -31,6 +31,7 @@ function initPlayers() {
             pic: 'https://i.loli.net/2019/06/06/5cf8c5d9c57b510947.png',
             type: 'auto'
         },
+        loading: false
         // contextmenu: [
         //     {
         //         text: 'custom contextmenu',
